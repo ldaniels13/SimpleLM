@@ -44,3 +44,6 @@ plot(density(bucket))
   cor(x,z)
 ```
 
+##Geometric interpretation  
+
+### x and y are vectors and their sumproduct is a dot-product. They both have the same length. The original dot product is their length squared, any permutation of y produces a vector of the same length but their dot product is then reduced by the cosine of the angle between them, so basically the correlation between x and z is the cosign of the angle between x and z as vectors.
