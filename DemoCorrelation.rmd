@@ -7,6 +7,7 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+source("vec_cos.R")
 ```
 
 ## Create a 2 col array balanced at zero
@@ -46,4 +47,13 @@ plot(density(bucket))
 
 ##Geometric interpretation  
 
-### x and y are vectors and their sumproduct is a dot-product. They both have the same length. The original dot product is their length squared, any permutation of y produces a vector of the same length but their dot product is then reduced by the cosine of the angle between them, so basically the correlation between x and z is the cosign of the angle between x and z as vectors.
+### x and y are vectors and their sumproduct is a dot-product. They both have the same length. The original dot product is their length squared, any permutation of y produces a vector of the same length but their dot product is then reduced by the cosine of the angle between them, so basically the correlation between x and z is the cosine of the angle between x and z as vectors.
+
+```{r}
+if(!require("pracma")) {install.packages("pracma");require("pracma")}
+
+dot(x,z)
+print(vec_cos(x,z))
+
+```
+
