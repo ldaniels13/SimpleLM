@@ -1,0 +1,36 @@
+---
+title: "Demo Correlation"
+author: "Dr K"
+date: "November 1, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Create a 2 col array balanced at zero
+
+```{r}
+x=seq(from=-10,to=10,by=2)
+y=x
+tot=sum(x*y)
+tot
+```
+benchmark
+
+now got thru a loop of permuting y and capturing the product into a bucket.
+
+```{r}
+bucket=numeric()
+for (i in 1:1000){
+  z=sample(y,size = length(x))
+  bucket[i]=sum(x*z)
+}
+```
+```{r}
+summary(bucket)
+plot(density(bucket))
+```
+  
+#Conclusion - The largest sum of products occurs when the numbers are paired with each other. Any other permutation of the y's with the x's yields a smaller number (in absolute value). The sum product is basically the correlation. (un-normalized)
