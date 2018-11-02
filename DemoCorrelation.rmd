@@ -34,3 +34,13 @@ plot(density(bucket))
 ```
   
 #Conclusion - The largest sum of products occurs when the numbers are paired with each other. Any other permutation of the y's with the x's yields a smaller number (in absolute value). The sum product is basically the correlation. (un-normalized)
+
+```{r}
+ z=sample(y,size = length(x))
+  aaa=sum(x*z)
+  plot(x,z)
+  aaa/tot
+  #now use correlation function
+  cor(x,z)
+```
+
