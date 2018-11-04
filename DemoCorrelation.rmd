@@ -18,9 +18,9 @@ y=x
 tot=sum(x*y)
 tot
 ```
-benchmark
-
-now got thru a loop of permuting y and capturing the product into a bucket.
+### We now have a benchmark  
+  
+#### now go thru a loop of permuting y and capturing the product into a bucket.
 
 ```{r}
 bucket=numeric()
@@ -34,7 +34,7 @@ summary(bucket)
 plot(density(bucket))
 ```
   
-#Conclusion - The largest sum of products occurs when the numbers are paired with each other. Any other permutation of the y's with the x's yields a smaller number (in absolute value). The sum product is basically the correlation. (un-normalized)
+#Conclusion - The largest sum of products occurs when the numbers are paired with each other. Any other permutation of the y's with the x's yields a smaller number (in absolute value). The sum product is basically the correlation. (un-normalized, when the two vectors are translated to their respective centers (means))
 
 ```{r}
  z=sample(y,size = length(x))
@@ -47,13 +47,14 @@ plot(density(bucket))
 
 ##Geometric interpretation  
 
-### x and y are vectors and their sumproduct is a dot-product. They both have the same length. The original dot product is their length squared, any permutation of y produces a vector of the same length but their dot product is then reduced by the cosine of the angle between them, so basically the correlation between x and z is the cosine of the angle between x and z as vectors.
-
+### x and y are vectors and their sumproduct is a dot-product. They both have the same length. The original dot product is their length squared, any permutation of y produces a vector of the same length but their dot product is then reduced by the cosine of the angle between them, so basically the correlation between x and z is the cosine of the angle between x and z as vectors. The cosine relationship is true if the two vectors are centered at zero (ie both are translated to their respective means - this is why we made up our example to be 'balanced at zero'. Once the vectors have been translated to (0,0) any multiplicative factor applied to either of them is simply a stretching or shrinking of that measurement scale and as such wont effect the angle between them and thus will not change the size of their correlation (it could of course change its sign). The code below demonstrates this.
 ```{r}
 if(!require("pracma")) {install.packages("pracma");require("pracma")}
 
 dot(x,z)
 print(vec_cos(x,z))
-
+(zz=5*z)
+(xx= -3*x)
+print(vec_cos(xx,zz))
 ```
 
