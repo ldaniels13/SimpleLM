@@ -1,0 +1,35 @@
+---
+title: "simpleRegress"
+author: "Dr K"
+date: "November 5, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## make a simple regression model
+
+```{r}
+bears <- read.csv(file="BEARS.csv",header = TRUE)
+```
+
+##Model LENGTH ~ HEADLEN
+
+```{r}
+simp <- lm(LENGTH~HEADLEN,data=bears)
+plot(LENGTH~HEADLEN,data=bears)
+abline(simp)
+summary.lm(simp)
+```
+
+## now predict the length of a bear who has a headlen of 13, 14 and 15
+
+
+```{r}
+new <- data.frame(HEADLEN=c(13,14,15))
+predict(simp,new)
+predict(simp,new,se.fit=TRUE)
+```
+
