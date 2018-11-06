@@ -31,5 +31,26 @@ summary.lm(simp)
 new <- data.frame(HEADLEN=c(13,14,15))
 predict(simp,new)
 predict(simp,new,se.fit=TRUE)
+
 ```
+
+```{r}
+
+```
+#predic chest ~ neck 
+```{r}
+chestp <- lm(CHEST~NECK,data=bears)
+plot(CHEST~NECK,data=bears)
+abline(chestp)
+summary.lm(chestp)
+#multiple Im
+chestp2 <- lm(CHEST~NECK + WEIGHT, data=bears)
+summary.lm(chestp2)
+```
+
+```{r}
+new2 <- data.frame(NECK=c(30),WEIGHT=c(400))
+predict(chestp2,new2)
+```
+
 
